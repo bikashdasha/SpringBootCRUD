@@ -74,5 +74,9 @@ public class BooksController {
 	public long countBooksByAuthor(@PathVariable String author) {
 		return booksService.getBookCountByAuthor(author);
 	}
+	@GetMapping("/books/after/{year}")
+	public List<Books> getBooksAfterYear(@PathVariable int year) {
+		return booksService.getBooksAfterYear(year);
+	}
 
 }
