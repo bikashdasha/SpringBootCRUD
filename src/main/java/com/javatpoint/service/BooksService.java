@@ -22,7 +22,7 @@ public class BooksService {
 
 //getting a specific record by using the method findById() of CrudRepository
 	public Books getBooksById(int id) {
-		return booksRepository.findById(id).get();
+		return booksRepository.findById(id).orElse(null);
 	}
 
 //saving a specific record by using the method save() of CrudRepository
