@@ -48,4 +48,7 @@ public List<Books> searchByName(String bookname){
 		return booksRepository.findByAuthorContainingIgnoreCase(author);
 	}
 
+	public long getTotalBooks(){
+		return booksRepository.count();
+	}
 }

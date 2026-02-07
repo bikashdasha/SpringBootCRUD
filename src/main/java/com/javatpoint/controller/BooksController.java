@@ -60,4 +60,9 @@ public class BooksController {
 		return booksService.searchByAuthor(author);
 	}
 
+	@GetMapping("/books/count")
+	public long getBookCount() {
+		return booksService.getTotalBooks();
+	}
+
 }
