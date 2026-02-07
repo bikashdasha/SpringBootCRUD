@@ -84,5 +84,9 @@ public class BooksController {
 	public List<Books> getBooksByCategory(@PathVariable String category) {
 		return booksService.getBooksByCategory(category);
 	}
+	@GetMapping("/books/sorted")
+	public List<Books> getSortedBooks() {
+		return booksService.getBooksSortedByTitle();
+	}
 
 }

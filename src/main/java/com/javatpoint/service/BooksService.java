@@ -63,5 +63,8 @@ public List<Books> searchByName(String bookname){
 	public List<Books> getBooksByCategory(String category) {
 		return booksRepository.findByCategory(category);
 	}
+	public List<Books> getBooksSortedByTitle() {
+		return booksRepository.findAllByOrderByBookTitleAsc();
+	}
 
 }
