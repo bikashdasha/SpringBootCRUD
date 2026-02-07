@@ -1,6 +1,7 @@
 import com.javatpoint.repository.BooksRepository;
 import com.javatpoint.service.BooksService;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -12,6 +13,9 @@ import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+@ExtendWith(MockitoExtension.class)
 class BooksServiceTest {
 
     @Mock
@@ -20,28 +24,25 @@ class BooksServiceTest {
     @InjectMocks
     private BooksService booksService;
 
-    public BooksServiceTest() {
-        MockitoAnnotations.initMocks(this);
+    @Test
+    void testGetBookCountByAuthor_found() {
 
+        when(booksRepository.countByAuthorIgnoreCase("martin"))
+                .thenReturn(2L);
+
+        long result = booksService.getBookCountByAuthor("martin");
+
+        assertEquals(2L, result);
     }
 
     @Test
-    void testBookExists_true() {
+    void testGetBookCountByAuthor_notFound() {
 
-        when(booksRepository.existsById(1)).thenReturn(true);
+        when(booksRepository.countByAuthorIgnoreCase("unknown"))
+                .thenReturn(0L);
 
-        boolean result = booksService.isBookExists(1);
+        long result = booksService.getBookCountByAuthor("unknown");
 
-        assertTrue(result);
-    }
-
-    @Test
-    void testBookExists_false() {
-
-        when(booksRepository.existsById(99)).thenReturn(false);
-
-        boolean result = booksService.isBookExists(99);
-
-        assertFalse(result);
+        assertEquals(0L, result);
     }
 }

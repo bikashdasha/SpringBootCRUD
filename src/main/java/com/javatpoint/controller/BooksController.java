@@ -69,5 +69,10 @@ public class BooksController {
 	public boolean checkBookExists(@PathVariable int id) {
 		return booksService.isBookExists(id);
 	}
+	//search by author
+	@GetMapping("/books/count/author/{author}")
+	public long countBooksByAuthor(@PathVariable String author) {
+		return booksService.getBookCountByAuthor(author);
+	}
 
 }
