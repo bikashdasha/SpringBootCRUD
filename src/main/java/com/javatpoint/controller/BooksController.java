@@ -65,4 +65,9 @@ public class BooksController {
 		return booksService.getTotalBooks();
 	}
 
+	@GetMapping("/books/exists/{id}")
+	public boolean checkBookExists(@PathVariable int id) {
+		return booksService.isBookExists(id);
+	}
+
 }

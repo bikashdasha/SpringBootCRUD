@@ -51,4 +51,8 @@ public List<Books> searchByName(String bookname){
 	public long getTotalBooks(){
 		return booksRepository.count();
 	}
+	public boolean isBookExists(int id) {
+		return booksRepository.existsById(id);
+	}
+
 }
