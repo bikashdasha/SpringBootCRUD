@@ -57,5 +57,8 @@ public List<Books> searchByName(String bookname){
 	public long getBookCountByAuthor(String author) {
 		return booksRepository.countByAuthorIgnoreCase(author);
 	}
+	public List<Books> getBooksAfterYear(int year) {
+		return booksRepository.findByYearGreaterThan(year);
+	}
 
 }

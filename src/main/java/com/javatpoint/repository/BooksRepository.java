@@ -10,5 +10,6 @@ public interface BooksRepository extends CrudRepository<Books, Integer>
     List<Books> findByBookname(String bookname);
     List<Books> findByAuthorContainingIgnoreCase(String author);
     long countByAuthorIgnoreCase(String author);
+    List<Books> findByYearGreaterThan(int year);
 
 }
