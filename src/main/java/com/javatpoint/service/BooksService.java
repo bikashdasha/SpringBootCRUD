@@ -44,4 +44,8 @@ public List<Books> searchByName(String bookname){
 	return booksRepository.findByBookname(bookname);
 }
 
+	public List<Books> searchByAuthor(String author){
+		return booksRepository.findByAuthorContainingIgnoreCase(author);
+	}
+
 }

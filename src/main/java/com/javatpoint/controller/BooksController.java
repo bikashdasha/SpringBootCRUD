@@ -55,4 +55,9 @@ public class BooksController {
 		return booksService.searchByName(name);
 	}
 
+	@GetMapping("/books/search/{author}")
+	public List<Books> searchBooks(@PathVariable String author){
+		return booksService.searchByAuthor(author);
+	}
+
 }
