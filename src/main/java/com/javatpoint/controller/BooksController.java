@@ -50,4 +50,9 @@ public class BooksController {
 		booksService.saveOrUpdate(books);
 		return books;
 	}
+	@GetMapping("/book/search/{name}")
+	private List<Books> searchBook(@PathVariable("name") String name){
+		return booksService.searchByName(name);
+	}
+
 }
