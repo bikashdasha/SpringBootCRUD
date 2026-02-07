@@ -39,4 +39,9 @@ public class BooksService {
 	public void update(Books books, int bookid) {
 		booksRepository.save(books);
 	}
+//search
+public List<Books> searchByName(String bookname){
+	return booksRepository.findByBookname(bookname);
+}
+
 }
