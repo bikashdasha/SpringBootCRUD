@@ -79,4 +79,10 @@ public class BooksController {
 		return booksService.getBooksAfterYear(year);
 	}
 
+	//get books by category
+	@GetMapping("/books/category/{category}")
+	public List<Books> getBooksByCategory(@PathVariable String category) {
+		return booksService.getBooksByCategory(category);
+	}
+
 }

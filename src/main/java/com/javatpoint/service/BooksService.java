@@ -60,5 +60,8 @@ public List<Books> searchByName(String bookname){
 	public List<Books> getBooksAfterYear(int year) {
 		return booksRepository.findByYearGreaterThan(year);
 	}
+	public List<Books> getBooksByCategory(String category) {
+		return booksRepository.findByCategory(category);
+	}
 
 }
