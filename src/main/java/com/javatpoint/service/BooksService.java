@@ -2,6 +2,8 @@ package com.javatpoint.service;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.javatpoint.exception.BookNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -24,8 +26,7 @@ public class BooksService {
 
 //getting a specific record by using the method findById() of CrudRepository
 	public Books getBooksById(int id) {
-		return booksRepository.findById(id).orElse(null);
-	}
+		return booksRepository.findById(id).orElseThrow(() -> new BookNotFoundException("Book not found with id: " + id)); }
 
 //saving a specific record by using the method save() of CrudRepository
 	public void saveOrUpdate(Books books) {
