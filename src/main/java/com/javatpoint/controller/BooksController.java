@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import com.javatpoint.model.Books;
 import com.javatpoint.service.BooksService;
 
+import javax.validation.Valid;
+
 //mark class as Controller
 @RestController
 public class BooksController {
@@ -35,14 +37,14 @@ public class BooksController {
 
 //creating post mapping that post the book detail in the database
 	@PostMapping("/books")
-	private int saveBook(@RequestBody Books books) {
+	private int saveBook(@Valid @RequestBody Books books) {
 		booksService.saveOrUpdate(books);
 		return books.getBookid();
 	}
 
 //creating put mapping that updates the book detail 
 	@PutMapping("/books")
-	private Books update(@RequestBody Books books) {
+	private Books update(@Valid @RequestBody Books books) {
 		booksService.saveOrUpdate(books);
 		return books;
 	}

@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
+
 
 //mark class as an Entity 
 @Entity
@@ -19,12 +22,15 @@ public class Books {
 private int bookid;
 
 	@Column
+	@NotBlank(message = "Book name is required")
 	private String bookname;
 
 	@Column
+	@NotBlank(message = "Author is required")
 	private String author;
 
 	@Column
+	@Positive(message = "Price must be positive")
 	private int price;
 
 	// ✅ newly added field
@@ -33,6 +39,7 @@ private int bookid;
 
 	// ✅ newly added field
 	@Column
+	@NotBlank(message = "Category is required")
 	private String category;
 
 	// getters and setters
