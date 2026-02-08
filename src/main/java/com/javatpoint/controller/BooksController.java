@@ -2,13 +2,9 @@ package com.javatpoint.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.*;
 import com.javatpoint.model.Books;
 import com.javatpoint.service.BooksService;
 
@@ -84,9 +80,14 @@ public class BooksController {
 	public List<Books> getBooksByCategory(@PathVariable String category) {
 		return booksService.getBooksByCategory(category);
 	}
-	@GetMapping("/books/sorted")
-	public List<Books> getSortedBooks() {
-		return booksService.getBooksSortedByTitle();
+
+	@GetMapping("/books/pagination")
+	public List<Books> getBooksPagination(
+			@RequestParam(defaultValue = "0") int page,
+			@RequestParam(defaultValue = "5") int size) {
+
+		Pageable pageable = PageRequest.of(page, size);
+		return booksService.getBooksPagination(pageable);
 	}
 
 }

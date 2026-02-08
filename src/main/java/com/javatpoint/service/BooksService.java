@@ -3,6 +3,8 @@ package com.javatpoint.service;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import com.javatpoint.model.Books;
 import com.javatpoint.repository.BooksRepository;
@@ -63,8 +65,9 @@ public List<Books> searchByName(String bookname){
 	public List<Books> getBooksByCategory(String category) {
 		return booksRepository.findByCategory(category);
 	}
-	public List<Books> getBooksSortedByTitle() {
-		return booksRepository.findAllByOrderByBookTitleAsc();
+	public List<Books> getBooksPagination(Pageable pageable) {
+		Page<Books> page = booksRepository.findAll(pageable);
+		return page.getContent();
 	}
 
 }
