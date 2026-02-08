@@ -13,16 +13,29 @@ import javax.persistence.Table;
 @Table
 public class Books {
 //Defining book id as primary key
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column
-	private int bookid;
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+@Column
+private int bookid;
+
 	@Column
 	private String bookname;
+
 	@Column
 	private String author;
+
 	@Column
 	private int price;
+
+	// ✅ newly added field
+	@Column
+	private int year;
+
+	// ✅ newly added field
+	@Column
+	private String category;
+
+	// getters and setters
 
 	public int getBookid() {
 		return bookid;
@@ -55,4 +68,21 @@ public class Books {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+
+	public int getYear() {
+		return year;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
 }
